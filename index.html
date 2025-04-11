@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<script>
+  const links = [
+    "https://tomomon.jp/programming/ksnctf5/",
+    "https://www.youtube.com/watch?v=vLV0UZ308bQ&t=155s",
+    "https://tomomon.jp/travel/my_secret_place/",
+    "https://tomomon.jp/travel/travel_ranking/"
+  ];
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const randomIndex = Math.floor(Math.random() * links.length);
+    window.location.href = links[randomIndex];
+  });
+</script>
+<body style="background:#f0f0f0;display:grid;place-items:center;min-height:100vh;">
+  <p style="font-family:Arial;color:#666;">
+    リダイレクト中... 
+    <a href="javascript:location.reload()" style="color:#06c;text-decoration:none;">
+      手動で再試行
+    </a>
+  </p>
+</body>
+</html>
