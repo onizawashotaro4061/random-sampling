@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
-<script>
-  const links = [
-    "https://tomomon.jp/programming/ksnctf5/",
-    "https://www.youtube.com/watch?v=vLV0UZ308bQ&t=155s",
-    "https://tomomon.jp/travel/my_secret_place/",
-    "https://tomomon.jp/travel/travel_ranking/"
-  ];
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    const randomIndex = Math.floor(Math.random() * links.length);
-    window.location.href = links[randomIndex];
-  });
-</script>
-<body style="background:#f0f0f0;display:grid;place-items:center;min-height:100vh;">
-  <p style="font-family:Arial;color:#666;">
-    リダイレクト中... 
-    <a href="javascript:location.reload()" style="color:#06c;text-decoration:none;">
-      手動で再試行
-    </a>
-  </p>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    // リンクとその重みを設定
+    const links = [
+      { url: "https://forms.gle/fANsa2Dc7AkFZJrh9", weight: 1 }, // 1回出現
+      { url: "https://forms.gle/CkRQhbTKEZ24Doqd9", weight: 1 }, // 1回出現
+      { url: "https://forms.gle/uhnnCAw8TkVKmGkf7", weight: 1 }  // 1回出現
+    ];
+
+    // 重みに基づいてリンクを初期化
+    function initLinks() {
+      const weightedList = [];
+      links.forEach(link => {
+        for (let i = 0; i < link.weight; i++) {
+          weightedList.push(link.url);
+        }
+      });
+      return weightedList;
+    }
+
+    // リダイレクト処理
+    function redirect() {
+      const targetLinks = initLinks();
+      const randomIndex = Math.floor(Math.random() * targetLinks.length);
+      window.location.href = targetLinks[randomIndex];
+    }
+
+    // ページ読み込み時にリダイレクト
+    window.onload = redirect;
+  </script>
+</head>
+<body>
+  <p>リダイレクト中...</p>
 </body>
 </html>
